@@ -1,0 +1,13 @@
+*,*::before,*::after {padding: 0;margin: 0;border: 0;box-sizing: border-box;}
+:root {font-size: 62.5%;}
+html,body{height: 100%; min-width: $minwidth;}
+body{font-family: $fontfamily; font-size: 1.6rem;line-height: 1; color: #848789;}
+aside,nav,header,footer,section{display: block;}
+a, a:visited {text-decoration: none;}
+a:hover {cursor: pointer;}
+ul,ol,li {list-style: none;}
+h1,h2,h3,h4,h5,h6 {font-weight: inherit;font-size: inherit;}
+input,button,textarea{font-family: $fontfamily;}
+input:focus,button:focus{outline: none;}
+button{cursor: pointer; background-color: transparent;}
+img{vertical-align: top;}

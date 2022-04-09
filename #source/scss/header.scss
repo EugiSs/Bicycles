@@ -1,0 +1,167 @@
+.header {
+  position: absolute;
+  width: 100%;
+  z-index: 99;
+  left: 0;
+  // вместо паддинга делаем верхний отступ всей шапке
+  top: 35px;
+  &__row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    // потому что из-за позоционирования лого эл-ты оптеряли высоту и стали не в одну линию
+    height: 85px;
+  }
+
+  &__menu {
+  }
+
+  &__logo {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+  }
+
+  @media (max-width: 767px) {
+    top: 15px;
+  }
+}
+
+.menu {
+  &__icon {
+  }
+
+  &__body {
+  }
+
+  &__list {
+    display: flex;
+    li {
+      padding: 0 37.5px;
+      // позиционирование для создания дизайна (точек)
+      position: relative;
+      &:nth-child(2) {
+        padding: 0 110px 0 37.5px;
+      }
+      &:nth-child(3) {
+        padding: 0 37.5px 0 110px;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 60%;
+        right: 2px;
+        width: 2px;
+        height: 2px;
+        background-color: #4d4959;
+        border-radius: 50%;
+      }
+      &:nth-child(2),
+      &:last-child {
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &__link {
+    color: #4d4959;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    font-weight: bold;
+    letter-spacing: 2.6px;
+  }
+
+  @media (max-width: 767px) {
+    &__body {
+      position: fixed;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #4d4959;
+      padding: 140px 0 20px 0;
+      // чтобы бургер меню могло прокручиваться
+      overflow: auto;
+      &.active {
+        top: 0;
+      }
+    }
+    &__list {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      li {
+        padding: 0 0 45px 0;
+        &:nth-child(2),
+        &:nth-child(3) {
+          padding: 0 0 45px 0;
+          &::after {
+            display: block;
+          }
+        }
+        &:last-child {
+          padding: 0;
+        }
+        &::after {
+          top: 65%;
+          right: 50%;
+          width: 3px;
+          height: 3px;
+          background-color: #fff;
+        }
+      }
+    }
+    &__link {
+      color: #fff;
+      font-size: 20px;
+    }
+  }
+}
+
+// дизайн бургера
+.icon-menu {
+  @media (max-width: 767px) {
+    display: block;
+    position: absolute;
+    top: 45px;
+    right: 30px;
+    width: 30px;
+    height: 18px;
+    cursor: pointer;
+    z-index: 5;
+    span {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #4d4959;
+      transition: all 0.5s ease 0s;
+      &:first-child {
+        top: -10px;
+      }
+      &:last-child {
+        top: 10px;
+      }
+    }
+    &.active {
+      span {
+        transform: scale(0);
+        background-color: #fff;
+        &:first-child {
+          transform: rotate(45deg);
+          top: 0;
+        }
+        &:last-child {
+          transform: rotate(-45deg);
+          top: 0;
+        }
+      }
+    }
+  }
+}
